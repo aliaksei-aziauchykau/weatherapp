@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Weather (super-services)</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 720px; margin: 2rem auto; padding: 0 1rem; }
+    .row { display: flex; gap: 1rem; flex-wrap: wrap; align-items: end; }
+    input, button { padding: 0.4rem 0.6rem; }
+    pre { background: #f3f3f3; padding: 1rem; overflow: auto; }
+    li { margin: 0.35rem 0; }
+  </style>
+</head>
+<body>
+  <h1>Weather</h1>
+  <p>Data: <a href="https://open-meteo.com" target="_blank" rel="noreferrer">Open-Meteo</a> (non-commercial, free). Snapshots: PostgreSQL.</p>
+  <div class="row">
+    <div><label>Lat<br /><input type="number" id="lat" value="52.52" step="0.0001" /></label></div>
+    <div><label>Lon<br /><input type="number" id="lon" value="13.41" step="0.0001" /></label></div>
+    <button type="button" id="load">Load current</button>
+    <button type="button" id="save">Save snapshot (today)</button>
+    <button type="button" id="list">Refresh list</button>
+  </div>
+  <h2>Current</h2>
+  <pre id="cur">—</pre>
+  <h2>Saved snapshots</h2>
+  <ol id="shots"></ol>
+  <script src="/config.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>

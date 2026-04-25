@@ -1,0 +1,3 @@
+volumes:
+  weatherapp-pg:
+    driver: local

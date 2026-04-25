@@ -1,0 +1,24 @@
+services:
+  gateway:
+    image: traefik:v2.11
+    container_name: weatherapp-gateway
+    command:
+      - --providers.docker=true
+      - --providers.docker.exposedbydefault=false
+      - --providers.file.directory=/etc/traefik/dynamic
+      - --providers.file.watch=true
+      - --log.level=INFO
+      - --entrypoints.web.address=:80
+      - --entrypoints.websecure.address=:443
+      - --api.dashboard=true
+      - --api.insecure=true
+    ports:
+      - "10080:80"
+      - "10443:443"
+      - "18081:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ${ROOT_WSL_PATH}/src/services/gateway/.docker/local/traefik-dynamic.yml:/etc/traefik/dynamic/traefik-dynamic.yml:ro
+    networks:
+      - weatherapp-network
+    restart: unless-stopped

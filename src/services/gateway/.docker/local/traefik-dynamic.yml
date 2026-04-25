@@ -1,0 +1,9 @@
+tls: {}
+
+http:
+  routers:
+    wgw-dash:
+      rule: "Host(`gateway.weatherapp.local.projects.super-services.site`)"
+      service: api@internal
+      entryPoints:
+        - web

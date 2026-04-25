@@ -1,0 +1,20 @@
+services:
+  ui:
+    build:
+      context: ./src/services/ui
+      dockerfile: .docker/development/Dockerfile
+    image: weatherapp-ui:development
+    container_name: weatherapp-ui
+    environment:
+      WEATHER_API_PUBLIC_BASE_URL: ${WEATHER_API_PUBLIC_BASE_URL}
+    depends_on:
+      - api
+    networks:
+      - weatherapp-network
+    restart: unless-stopped
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+      - "traefik.enable=true"
+      - "traefik.http.routers.wui.rule=Host(`ui.weatherapp.dev.projects.super-services.site`)"
+      - "traefik.http.routers.wui.entrypoints=web"
+      - "traefik.http.services.wui.loadbalancer.server.port=80"

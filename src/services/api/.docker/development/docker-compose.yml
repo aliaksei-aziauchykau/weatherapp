@@ -1,0 +1,26 @@
+services:
+  api:
+    build:
+      context: ./src/services/api
+      dockerfile: .docker/development/Dockerfile
+    image: weatherapp-api:development
+    container_name: weatherapp-api
+    depends_on:
+      - postgresql
+    environment:
+      WEATHER_DATABASE_CONNECTION_STRING: ${WEATHER_DATABASE_CONNECTION_STRING}
+      WEATHER_CORS_ORIGINS: ${WEATHER_CORS_ORIGINS}
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80/health"]
+      interval: 20s
+      timeout: 3s
+      retries: 5
+    networks:
+      - weatherapp-network
+    restart: unless-stopped
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+      - "traefik.enable=true"
+      - "traefik.http.routers.wapi.rule=Host(`api.weatherapp.dev.projects.super-services.site`)"
+      - "traefik.http.routers.wapi.entrypoints=web"
+      - "traefik.http.services.wapi.loadbalancer.server.port=80"

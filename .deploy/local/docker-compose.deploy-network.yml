@@ -1,0 +1,4 @@
+networks:
+  weatherapp-network:
+    name: ${WEATHERAPP_NETWORK_NAME:-vs-weatherapp-local-network}
+    external: true
