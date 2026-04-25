@@ -1,0 +1,55 @@
+## OS
+.DS_Store
+Thumbs.db
+
+## Node / Nx / Angular
+node_modules/
+**/node_modules/
+dist/
+**/dist/
+tmp/
+.angular/
+.nx/
+.cache/
+**/.next/
+**/.output/
+**/coverage/
+
+## Nx specific cache
+**/.nx/cache/
+
+## Env files
+.env
+.env.*
+!.env.example
+!.deploy/**/.env.example
+
+## Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+## .NET / Visual Studio
+**/bin/
+**/obj/
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## Build outputs
+artifacts/
+
+## IDEs
+.idea/
+.vscode/
+
+## Local TLS certs (Traefik dev)
+src/services/gateway/.docker/local/certs/*
+!src/services/gateway/.docker/local/certs/.gitkeep
+
+## UI Automation test reports
+src/services/ui-automation/reports/*
+!src/services/ui-automation/reports/.gitkeep
