@@ -15,6 +15,6 @@ services:
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
       - "traefik.enable=true"
-      - "traefik.http.routers.wui.rule=Host(`ui.weatherapp.dev.projects.super-services.site`)"
+      - "traefik.http.routers.wui.rule=Host(`ui.weatherapp.dev.projects.volnyja-siervisy.site`)"
       - "traefik.http.routers.wui.entrypoints=web"
       - "traefik.http.services.wui.loadbalancer.server.port=80"

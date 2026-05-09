@@ -3,7 +3,7 @@ tls: {}
 http:
   routers:
     wgw-dash:
-      rule: "Host(`gateway.weatherapp.dev.projects.super-services.site`)"
+      rule: "Host(`gateway.weatherapp.dev.projects.volnyja-siervisy.site`)"
       service: api@internal
       entryPoints:
         - web
