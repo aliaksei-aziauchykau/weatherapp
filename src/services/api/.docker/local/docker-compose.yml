@@ -20,6 +20,6 @@ services:
     restart: unless-stopped
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.wapi.rule=Host(`api.weatherapp.local.projects.super-services.site`)"
+      - "traefik.http.routers.wapi.rule=Host(`api.weatherapp.local.projects.volnyja-siervisy.site`)"
       - "traefik.http.routers.wapi.entrypoints=web"
       - "traefik.http.services.wapi.loadbalancer.server.port=80"
